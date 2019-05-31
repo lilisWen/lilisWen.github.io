@@ -8,17 +8,20 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>常见命令行的使用 | liliswen的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、ls1. lsls即为list,是用来输出当前目录下的所有文件以及目录名（不包括隐藏文件） 2.ls -l-l，以长列表形式显示文件和目录的类型、权限、链接数、所属用户、所属组、大小（以字节为单位）、最近修改日期、文件名。（排列顺序与显示顺序相同）eg： 1-rw-r--r--@   1 lilis  staff    2172  5 31 18:53 _config.yml  3.ls -a">
+  <meta name="description" content="前言本文描述了ls、cat、mv、touch四个常用命令，其余常用命令可查看explainshell.com网站，了解更多常用命令行使用方法。（具体查阅方法在本文结束时介绍） 一、ls1. lsls即为list,是用来输出当前目录下的所有文件以及目录名（不包括隐藏文件） 2.ls -l-l，以长列表形式显示文件和目录的类型、权限、链接数、所属用户、所属组、大小（以字节为单位）、最近修改日期、文件名">
 <meta property="og:type" content="article">
 <meta property="og:title" content="常见命令行的使用">
 <meta property="og:url" content="http://yoursite.com/2019/05/31/常见命令行的使用/index.html">
 <meta property="og:site_name" content="liliswen的博客">
-<meta property="og:description" content="一、ls1. lsls即为list,是用来输出当前目录下的所有文件以及目录名（不包括隐藏文件） 2.ls -l-l，以长列表形式显示文件和目录的类型、权限、链接数、所属用户、所属组、大小（以字节为单位）、最近修改日期、文件名。（排列顺序与显示顺序相同）eg： 1-rw-r--r--@   1 lilis  staff    2172  5 31 18:53 _config.yml  3.ls -a">
+<meta property="og:description" content="前言本文描述了ls、cat、mv、touch四个常用命令，其余常用命令可查看explainshell.com网站，了解更多常用命令行使用方法。（具体查阅方法在本文结束时介绍） 一、ls1. lsls即为list,是用来输出当前目录下的所有文件以及目录名（不包括隐藏文件） 2.ls -l-l，以长列表形式显示文件和目录的类型、权限、链接数、所属用户、所属组、大小（以字节为单位）、最近修改日期、文件名">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-31T12:25:08.016Z">
+<meta property="og:image" content="http://yoursite.com/explainshell1.png">
+<meta property="og:image" content="http://yoursite.com/explainshell2.png">
+<meta property="og:updated_time" content="2019-05-31T12:43:54.974Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常见命令行的使用">
-<meta name="twitter:description" content="一、ls1. lsls即为list,是用来输出当前目录下的所有文件以及目录名（不包括隐藏文件） 2.ls -l-l，以长列表形式显示文件和目录的类型、权限、链接数、所属用户、所属组、大小（以字节为单位）、最近修改日期、文件名。（排列顺序与显示顺序相同）eg： 1-rw-r--r--@   1 lilis  staff    2172  5 31 18:53 _config.yml  3.ls -a">
+<meta name="twitter:description" content="前言本文描述了ls、cat、mv、touch四个常用命令，其余常用命令可查看explainshell.com网站，了解更多常用命令行使用方法。（具体查阅方法在本文结束时介绍） 一、ls1. lsls即为list,是用来输出当前目录下的所有文件以及目录名（不包括隐藏文件） 2.ls -l-l，以长列表形式显示文件和目录的类型、权限、链接数、所属用户、所属组、大小（以字节为单位）、最近修改日期、文件名">
+<meta name="twitter:image" content="http://yoursite.com/explainshell1.png">
   
     <link rel="alternative" href="/atom.xml" title="liliswen的博客" type="application/atom+xml">
   
@@ -178,7 +181,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、ls"><a href="#一、ls" class="headerlink" title="一、ls"></a>一、ls</h2><p><strong>1. ls</strong><br>ls即为list,是用来输出当前目录下的所有文件以及目录名（不包括隐藏文件）</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文描述了ls、cat、mv、touch四个常用命令，其余常用命令可查看<a href="https://explainshell.com" target="_blank" rel="noopener">explainshell.com</a>网站，了解更多常用命令行使用方法。（具体查阅方法在本文结束时介绍）</p>
+<h2 id="一、ls"><a href="#一、ls" class="headerlink" title="一、ls"></a>一、ls</h2><p><strong>1. ls</strong><br>ls即为list,是用来输出当前目录下的所有文件以及目录名（不包括隐藏文件）</p>
 <p><strong>2.ls -l</strong><br>-l，以长列表形式显示文件和目录的类型、权限、链接数、所属用户、所属组、大小（以字节为单位）、最近修改日期、文件名。（排列顺序与显示顺序相同）<br>eg：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-rw-r--r--@   1 lilis  staff    2172  5 31 18:53 _config.yml</span><br></pre></td></tr></table></figure>
 
@@ -196,6 +200,7 @@
 <h2 id="四、touch"><a href="#四、touch" class="headerlink" title="四、touch"></a>四、touch</h2><p><strong>1.$ touch 1.txt</strong><br>若1.txt不存在则创建1.txt<br>若1.txt存在则更新修改时间</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ ls -l</span><br><span class="line">-rw-r--r--   1 lilis  staff        36  5 31 19:51 1.txt</span><br><span class="line">$ touch 1.txt</span><br><span class="line">$ ls -l</span><br><span class="line">-rw-r--r--   1 lilis  staff        36  5 31 20:17 1.txt</span><br></pre></td></tr></table></figure>
 
+<h2 id="explainshell-com-使用方法"><a href="#explainshell-com-使用方法" class="headerlink" title="explainshell.com 使用方法"></a>explainshell.com 使用方法</h2><p>打开网页后，在搜索框内输入想要查询的命令行语句，例如：ls -l，鼠标移动到命令上则会显示相对应的解释（但是是英文解释哦！）<br><img src="/explainshell1.png" alt><br><img src="/explainshell2.png" alt></p>
 
       
 
