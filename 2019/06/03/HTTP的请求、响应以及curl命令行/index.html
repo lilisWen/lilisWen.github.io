@@ -6,15 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>liliswen的博客</title>
+  <title>通过curl认知HTTP的请求、响应 | liliswen的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="liliswen的博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="前言在我们日常浏览网页的过程，实际是客户端向服务器发送HTTP请求，而服务器接收到请求后，返回给客户端一个HTTP响应的过程，接下来本文将通过curl访问https://www.baidu.cam来讲解HTTP的请求与响应。 HTTP的请求1curl -s -v -H &amp;quot;Frank: xxx&amp;quot; -- &amp;quot;https://www.baidu.com&amp;quot;//通过cu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="通过curl认知HTTP的请求、响应">
+<meta property="og:url" content="http://yoursite.com/2019/06/03/HTTP的请求、响应以及curl命令行/index.html">
 <meta property="og:site_name" content="liliswen的博客">
+<meta property="og:description" content="前言在我们日常浏览网页的过程，实际是客户端向服务器发送HTTP请求，而服务器接收到请求后，返回给客户端一个HTTP响应的过程，接下来本文将通过curl访问https://www.baidu.cam来讲解HTTP的请求与响应。 HTTP的请求1curl -s -v -H &amp;quot;Frank: xxx&amp;quot; -- &amp;quot;https://www.baidu.com&amp;quot;//通过cu">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/HTTP%E8%AF%B7%E6%B1%82%E5%8F%8A%E5%93%8D%E5%BA%94.png">
+<meta property="og:updated_time" content="2019-06-03T12:48:40.151Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="liliswen的博客">
+<meta name="twitter:title" content="通过curl认知HTTP的请求、响应">
+<meta name="twitter:description" content="前言在我们日常浏览网页的过程，实际是客户端向服务器发送HTTP请求，而服务器接收到请求后，返回给客户端一个HTTP响应的过程，接下来本文将通过curl访问https://www.baidu.cam来讲解HTTP的请求与响应。 HTTP的请求1curl -s -v -H &amp;quot;Frank: xxx&amp;quot; -- &amp;quot;https://www.baidu.com&amp;quot;//通过cu">
+<meta name="twitter:image" content="http://yoursite.com/images/HTTP%E8%AF%B7%E6%B1%82%E5%8F%8A%E5%93%8D%E5%BA%94.png">
   
     <link rel="alternative" href="/atom.xml" title="liliswen的博客" type="application/atom+xml">
   
@@ -154,16 +160,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-HTTP的请求、响应以及curl命令行" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-HTTP的请求、响应以及curl命令行" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/03/HTTP的请求、响应以及curl命令行/">通过curl认知HTTP的请求、响应</a>
+    <h1 class="article-title" itemprop="name">
+      通过curl认知HTTP的请求、响应
     </h1>
   
 
@@ -185,6 +189,27 @@
       
 
       
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
     </div>
     <div class="article-info article-info-index">
       
@@ -192,16 +217,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/03/HTTP的请求、响应以及curl命令行/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/06/03/HTTP的请求、响应以及curl命令行/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/05/31/常见命令行的使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">常见命令行的使用</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -221,217 +305,14 @@
 
 
 
-
   
-    <article id="post-常见命令行的使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/31/常见命令行的使用/">常见命令行的使用</a>
-    </h1>
   
 
-        
-        <a href="/2019/05/31/常见命令行的使用/" class="archive-article-date">
-  	<time datetime="2019-05-31T10:58:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文描述了ls、cat、mv、touch四个常用命令，其余常用命令可查看<a href="https://explainshell.com" target="_blank" rel="noopener">explainshell.com</a>网站，了解更多常用命令行使用方法。（具体查阅方法在本文结束时介绍）</p>
-<h2 id="一、ls"><a href="#一、ls" class="headerlink" title="一、ls"></a>一、ls</h2><p><strong>1. ls</strong><br>ls即为list,是用来输出当前目录下的所有文件以及目录名（不包括隐藏文件）</p>
-<p><strong>2.ls -l</strong><br>-l，以长列表形式显示文件和目录的类型、权限、链接数、所属用户、所属组、大小（以字节为单位）、最近修改日期、文件名。（排列顺序与显示顺序相同）<br>eg：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-rw-r--r--@   1 lilis  staff    2172  5 31 18:53 _config.yml</span><br></pre></td></tr></table></figure>
-
-<p><strong>3.ls -a</strong><br>-a，列出包括隐藏文件和目录、以及“.”、“..”在内的所有文件。</p>
-<p><strong>4.ls -al</strong><br>-al即-a与-l联合使用，显示所有文件的详细信息。</p>
-        
-          <a class="article-more-a" href="/2019/05/31/常见命令行的使用/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/31/常见命令行的使用/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-开博大吉" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/29/开博大吉/">开博大吉</a>
-    </h1>
   
 
-        
-        <a href="/2019/05/29/开博大吉/" class="archive-article-date">
-  	<time datetime="2019-05-29T14:11:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#嘻嘻<br>我的博客开通啦</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/29/开博大吉/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/29/hello-world/">Hello World</a>
-    </h1>
   
 
-        
-        <a href="/2019/05/29/hello-world/" class="archive-article-date">
-  	<time datetime="2019-05-29T14:01:04.918Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/29/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
 
 
@@ -454,8 +335,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
