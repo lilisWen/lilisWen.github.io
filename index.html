@@ -176,18 +176,31 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文介绍几个常见的HTML标签&lt;a&gt;,&lt;ifram&gt;,&lt;form&gt;,&lt;input&gt;,&lt;button&gt;,&lt;table&gt;的你不知道的知识。</p>
-<hr>
-<h3 id="1-lt-a-gt-标签"><a href="#1-lt-a-gt-标签" class="headerlink" title="1.&lt;a&gt;标签"></a>1.&lt;a&gt;标签</h3><p><strong>HTML <a> 元素(或称锚元素)</a></strong> 可以创建通向其他网页、文件、同一页面内的位置、电子邮件地址或任何其他 URL 的超链接。（发送GET请求）<br>在&lt;a&gt;标签中我门时常会加上<strong>href</strong>，那么href里到底可以填什么内容，并且都有什么不同的作用呢？</p>
-<ol>
-<li>完整的网页链接<br>例如: <a href="https://www.baidu.com，一个完整的链接包含所使用的协议（http\https\file...）+域名" target="_blank" rel="noopener">https://www.baidu.com，一个完整的链接包含所使用的协议（http\https\file...）+域名</a><br>当href等于一个完整的网页链接时，当我们点击&lt;a&gt;标签时，就会像该网页发送一个GET请求。</li>
-<li>不完整的网页链接<br>例如：//<a href="http://www.baidu.com。" target="_blank" rel="noopener">www.baidu.com。</a><br>当href等于一个形如//<a href="http://www.baidu.com的网页链接时，在我们点击a标签时，浏览器会根据当前网络的协议自动补全网址，并发起一个GET请求。" target="_blank" rel="noopener">www.baidu.com的网页链接时，在我们点击a标签时，浏览器会根据当前网络的协议自动补全网址，并发起一个GET请求。</a></li>
-</ol>
-<p><strong>注意：</strong> 此时，千万不能使用file协议去访问html文件，否则无法正确发起GET请求。(否则将会造成如下后果)<br><img src="./images///%E8%AE%BF%E9%97%AEbaidu" alt><br>3.javascript: XX;<br>例如：javascript: alert(1);<br>当href等于形如javascript: XX;内容时，当我们点击a标签，就会触发这段javascript代码。<br><strong>注意：</strong> 如果href等于javascript:;则可以点击a标签什么都不出发，不会刷新页面。如果我们遇到点击a标签确什么都不触发的需求时，我们就可以使用这样的形式。可能有人会发出疑问，为什么不能直接写成&lt;a href=”#”/&gt;或者&lt;a href=””/&gt;，读者们可以试试，这样写的话同样会发起GET请求，只是参数为#或空，这样相当于请求当前的页面，即刷新页面，页面会回到顶部重新加载。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文介绍几个常见的HTML标签&lt;a&gt;,&lt;ifram&gt;,&lt;form&gt;,&lt;table&gt;的你不知道的知识。</p>
+<h3 id="1-lt-a-gt-标签"><a href="#1-lt-a-gt-标签" class="headerlink" title="1.&lt;a&gt;标签"></a>1.&lt;a&gt;标签</h3><p><strong>HTML <a> 元素(或称锚元素)</a></strong> 可以创建通向其他网页、文件、同一页面内的位置、电子邮件地址或任何其他 URL 的超链接。（发送GET请求）<br>在&lt;a&gt;标签中我门时常会加上<strong>href</strong>，那么href里到底可以填什么内容，并且都有什么不同的作用呢？<br>1.完整的网页链接<br>例如: “<a href="https://www.baidu.com&quot;" target="_blank" rel="noopener">https://www.baidu.com&quot;</a> 一个完整的链接包含所使用的协议（http\https\file…）+域名<br>当href等于一个完整的网页链接时，当我们点击&lt;a&gt;标签时，就会像该网页发送一个GET请求。<br>2.不完整的网页链接<br>例如：”//<a href="http://www.baidu.com&quot;" target="_blank" rel="noopener">www.baidu.com&quot;</a><br>当href等于一个形如”//<a href="http://www.baidu.com&quot;" target="_blank" rel="noopener">www.baidu.com&quot;</a> 的网页链接时，在我们点击a标签时，浏览器会根据当前网络的协议自动补全网址，并发起一个GET请求。<br><strong>注意：</strong> 此时，千万不能使用file协议去访问html文件，否则无法正确发起GET请求。(否则将会造成如下后果)<br><img src="./images/%E8%AE%BF%E9%97%AEbaidu.png" alt><br>3.javascript: XX;<br>例如：javascript: alert(1);<br>当href等于形如javascript: XX;内容时，当我们点击a标签，就会触发这段javascript代码。<br><strong>注意：</strong> 如果href等于javascript:;则可以点击a标签什么都不出发，不会刷新页面。如果我们遇到点击a标签确什么都不触发的需求时，我们就可以使用这样的形式。可能有人会发出疑问，为什么不能直接写成&lt;a href=”#”/&gt;或者&lt;a href=””/&gt;，读者们可以试试，这样写的话同样会发起GET请求，只是参数为#或空，这样相当于请求当前的页面，即刷新页面，页面会回到顶部重新加载。</p>
 <hr>
 <p>接下来，介绍一下a标签的target属性。<br>target的作用是指定用什么方式打开a标签中的href所指向的内容<br><strong>1._blank</strong><br>在新的页面打开<br><strong>2._self</strong><br>在自身的页面打开<br><strong>3._parent</strong><br>在父级页面打开<br><strong>4._top</strong><br>在顶级页面打开<br><strong>5.name</strong><br>在指定位置打开</p>
 <hr>
-<p>在a标签中，还有一个特殊的属性download，这个属性一旦设置，点击a标签就会进行下载</p>
+<p>在a标签中，还有一个特殊的属性download，这个属性一旦设置，点击a标签就会进行下载。</p>
+<h3 id="2-lt-ifram-gt-标签"><a href="#2-lt-ifram-gt-标签" class="headerlink" title="2.&lt;ifram&gt;标签"></a>2.&lt;ifram&gt;标签</h3><p>HTML内联框架元素 <strong>&lt;iframe&gt;</strong> 表示嵌套的浏览上下文，有效地将另一个HTML页面嵌入到当前页面中。<br><strong>1.与&lt;a&gt;结合更好用哦</strong><br>例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe name=m src=“#”&gt;&lt;/frame&gt;</span><br><span class="line">&lt;a target=m href=“http://www.baidu .com”&gt;baidu&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+<p>点击&lt;a&gt;标签就能实现让访问的页面出现在iframe容器里。<br><strong>2.frameborder</strong><br>frameborder=0,消除丑陋的iframe边框。</p>
+<h3 id="3-lt-form-gt-标签"><a href="#3-lt-form-gt-标签" class="headerlink" title="3.&lt;form&gt;标签"></a>3.&lt;form&gt;标签</h3><p>&lt;form&gt;标签是表单，内容是需要提交的表单选项。<br><strong>1.&lt;form action=”XXX” method=”XXX”&gt;</strong><br>action填想要提交数据到的链接，method填的就是请求方法了，form支持的i请求方法主要是POST和GET，那么由于我们一般是提交数据到另一个页面，所以一半使用POST，GET方法一般情况下不传递参数（你要强行传也可以，只是一般人不这么做）。<br><strong>2.form标签里必须要有东西</strong><br>当然是submit，没有提交按钮怎么提交？？？<br>提交按钮可以用两种方式书写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. &lt;input type=&quot;submit&quot; value=&quot;提交&quot;/&gt;</span><br><span class="line">2. &lt;button&gt;提交&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong> input是空标签，不能够添加内容！<br>以上两种写法推荐第一种，更规范！<br><strong>补充几个form表单中常用的标签</strong></p>
+<ol>
+<li>&lt;input&gt; 具有多种type：checkbox（多选框），radiobox（name相同时，作为单选框），button（普通按钮），submit（y提交按钮）</li>
+<li>&lt;select&gt;下拉选框，具有三种状态：disable（不可选），selected（默认选中），multiple（可多选）<br>再补充一个小<strong>技巧：</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;lable &gt; &lt;input type=“checkbox” id=“a”&gt;爱我&lt;/lable&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>这样写点击文字就可以使checkbox的状态发生改变</p>
+<h3 id="lt-table-gt"><a href="#lt-table-gt" class="headerlink" title="&lt;table&gt;"></a>&lt;table&gt;</h3><p>colgroup与col的用法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;colgroup&gt;</span><br><span class="line">    &lt;col style=&quot;color:blue&quot;&gt;</span><br><span class="line">    &lt;col width=30px&gt;</span><br><span class="line">&lt;\colgroup&gt;</span><br></pre></td></tr></table></figure>
+
+<p>通过colgroup与col即可控制table中每一列的样式。</p>
 
       
 
