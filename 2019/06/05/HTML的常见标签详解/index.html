@@ -16,7 +16,7 @@
 <meta property="og:description" content="前言本文介绍几个常见的HTML标签&amp;lt;a&amp;gt;,&amp;lt;ifram&amp;gt;,&amp;lt;form&amp;gt;,&amp;lt;table&amp;gt;的你不知道的知识。 1.&amp;lt;a&amp;gt;标签HTML  元素(或称锚元素) 可以创建通向其他网页、文件、同一页面内的位置、电子邮件地址或任何其他 URL 的超链接。（发送GET请求）在&amp;lt;a&amp;gt;标签中我门时常会加上href，那么href里到底可以填什么内容">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/06/05/HTML的常见标签详解/images/%E8%AE%BF%E9%97%AEbaidu.png">
-<meta property="og:updated_time" content="2019-06-07T07:28:26.538Z">
+<meta property="og:updated_time" content="2019-06-07T07:33:41.123Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTML的常见标签详解">
 <meta name="twitter:description" content="前言本文介绍几个常见的HTML标签&amp;lt;a&amp;gt;,&amp;lt;ifram&amp;gt;,&amp;lt;form&amp;gt;,&amp;lt;table&amp;gt;的你不知道的知识。 1.&amp;lt;a&amp;gt;标签HTML  元素(或称锚元素) 可以创建通向其他网页、文件、同一页面内的位置、电子邮件地址或任何其他 URL 的超链接。（发送GET请求）在&amp;lt;a&amp;gt;标签中我门时常会加上href，那么href里到底可以填什么内容">
@@ -181,7 +181,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文介绍几个常见的HTML标签&lt;a&gt;,&lt;ifram&gt;,&lt;form&gt;,&lt;table&gt;的你不知道的知识。</p>
-<h3 id="1-lt-a-gt-标签"><a href="#1-lt-a-gt-标签" class="headerlink" title="1.&lt;a&gt;标签"></a>1.&lt;a&gt;标签</h3><p><strong>HTML <a> 元素(或称锚元素)</a></strong> 可以创建通向其他网页、文件、同一页面内的位置、电子邮件地址或任何其他 URL 的超链接。（发送GET请求）<br>在&lt;a&gt;标签中我门时常会加上<strong>href</strong>，那么href里到底可以填什么内容，并且都有什么不同的作用呢？<br>1.完整的网页链接<br>例如: “<a href="https://www.baidu.com&quot;" target="_blank" rel="noopener">https://www.baidu.com&quot;</a> 一个完整的链接包含所使用的协议（http\https\file…）+域名<br>当href等于一个完整的网页链接时，当我们点击&lt;a&gt;标签时，就会像该网页发送一个GET请求。<br>2.不完整的网页链接<br>例如：”//<a href="http://www.baidu.com&quot;" target="_blank" rel="noopener">www.baidu.com&quot;</a><br>当href等于一个形如”//<a href="http://www.baidu.com&quot;" target="_blank" rel="noopener">www.baidu.com&quot;</a> 的网页链接时，在我们点击a标签时，浏览器会根据当前网络的协议自动补全网址，并发起一个GET请求。<br><strong>注意：</strong> 此时，千万不能使用file协议去访问html文件，否则无法正确发起GET请求。(否则将会造成如下后果)<br><img src="./images/%E8%AE%BF%E9%97%AEbaidu.png" alt><br>3.javascript: XX;<br>例如：javascript: alert(1);<br>当href等于形如javascript: XX;内容时，当我们点击a标签，就会触发这段javascript代码。<br><strong>注意：</strong> 如果href等于javascript:;则可以点击a标签什么都不出发，不会刷新页面。如果我们遇到点击a标签确什么都不触发的需求时，我们就可以使用这样的形式。可能有人会发出疑问，为什么不能直接写成&lt;a href=”#”/&gt;或者&lt;a href=””/&gt;，读者们可以试试，这样写的话同样会发起GET请求，只是参数为#或空，这样相当于请求当前的页面，即刷新页面，页面会回到顶部重新加载。</p>
+<h3 id="1-lt-a-gt-标签"><a href="#1-lt-a-gt-标签" class="headerlink" title="1.&lt;a&gt;标签"></a>1.&lt;a&gt;标签</h3><p><strong>HTML <a> 元素(或称锚元素)</a></strong> 可以创建通向其他网页、文件、同一页面内的位置、电子邮件地址或任何其他 URL 的超链接。（发送GET请求）<br>在&lt;a&gt;标签中我门时常会加上<strong>href</strong>，那么href里到底可以填什么内容，并且都有什么不同的作用呢？<br>1.完整的网页链接<br>例如: “<a href="https://www.baidu.com&quot;" target="_blank" rel="noopener">https://www.baidu.com&quot;</a> 一个完整的链接包含所使用的协议（http\https\file…）+域名<br>当href等于一个完整的网页链接时，当我们点击&lt;a&gt;标签时，就会像该网页发送一个GET请求。<br>2.不完整的网页链接<br>例如：”//<a href="http://www.baidu.com&quot;" target="_blank" rel="noopener">www.baidu.com&quot;</a><br>当href等于一个形如”//<a href="http://www.baidu.com&quot;" target="_blank" rel="noopener">www.baidu.com&quot;</a> 的网页链接时，在我们点击a标签时，浏览器会根据当前网络的协议自动补全网址，并发起一个GET请求。<br><strong>注意：</strong> 此时，千万不能使用file协议去访问html文件，否则无法正确发起GET请求。(否则将会造成如下后果)</p>
+<a id="more"></a>
+<p><img src="./images/%E8%AE%BF%E9%97%AEbaidu.png" alt><br>3.javascript: XX;<br>例如：javascript: alert(1);<br>当href等于形如javascript: XX;内容时，当我们点击a标签，就会触发这段javascript代码。<br><strong>注意：</strong> 如果href等于javascript:;则可以点击a标签什么都不出发，不会刷新页面。如果我们遇到点击a标签确什么都不触发的需求时，我们就可以使用这样的形式。可能有人会发出疑问，为什么不能直接写成&lt;a href=”#”/&gt;或者&lt;a href=””/&gt;，读者们可以试试，这样写的话同样会发起GET请求，只是参数为#或空，这样相当于请求当前的页面，即刷新页面，页面会回到顶部重新加载。</p>
 <hr>
 <p>接下来，介绍一下a标签的target属性。<br>target的作用是指定用什么方式打开a标签中的href所指向的内容<br><strong>1._blank</strong><br>在新的页面打开<br><strong>2._self</strong><br>在自身的页面打开<br><strong>3._parent</strong><br>在父级页面打开<br><strong>4._top</strong><br>在顶级页面打开<br><strong>5.name</strong><br>在指定位置打开</p>
 <hr>
@@ -201,7 +203,7 @@
 </li>
 </ol>
 <p>这样写点击文字就可以使checkbox的状态发生改变</p>
-<h3 id="lt-table-gt"><a href="#lt-table-gt" class="headerlink" title="&lt;table&gt;"></a>&lt;table&gt;</h3><p>colgroup与col的用法：</p>
+<h3 id="4-lt-table-gt-标签"><a href="#4-lt-table-gt-标签" class="headerlink" title="4.&lt;table&gt;标签"></a>4.&lt;table&gt;标签</h3><p>colgroup与col的用法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;colgroup&gt;</span><br><span class="line">    &lt;col style=&quot;color:blue&quot;&gt;</span><br><span class="line">    &lt;col width=30px&gt;</span><br><span class="line">&lt;\colgroup&gt;</span><br></pre></td></tr></table></figure>
 
 <p>通过colgroup与col即可控制table中每一列的样式。</p>
