@@ -21,7 +21,7 @@
 <meta property="og:image" content="http://yoursite.com/images/POST%E8%AF%B7%E6%B1%82.png">
 <meta property="og:image" content="http://yoursite.com/images/baidu.png">
 <meta property="og:image" content="http://yoursite.com/images/login.png">
-<meta property="og:updated_time" content="2019-06-04T03:18:36.534Z">
+<meta property="og:updated_time" content="2019-06-25T06:49:08.608Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="通过curl认知HTTP的请求、响应">
 <meta name="twitter:description" content="前言在我们日常浏览网页的过程，实际是客户端向服务器发送HTTP请求，而服务器接收到请求后，返回给客户端一个HTTP响应的过程，接下来本文将通过curl访问https://www.baidu.cam来讲解HTTP的请求与响应。 HTTP的请求1.GET 1curl -s -v -H &amp;quot;Frank: xxx&amp;quot; -- &amp;quot;https://www.baidu.com&amp;quot;">
@@ -189,10 +189,10 @@
 <h2 id="HTTP的请求"><a href="#HTTP的请求" class="headerlink" title="HTTP的请求"></a>HTTP的请求</h2><p><strong>1.GET</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s -v -H &quot;Frank: xxx&quot; -- &quot;https://www.baidu.com&quot;//通过curl向https://www.baidu.cam发送请求</span><br></pre></td></tr></table></figure>
 
+<a id="more"></a>
 <p>(curl具体使用方法可在<a href="https://explainshell.com" target="_blank" rel="noopener">explainshell.com</a>中查询)</p>
 <p><img src="/images/GET%E8%AF%B7%E6%B1%82.png" alt></p>
 <p>“&gt;”符号后表示请求内容，图中红框部分为curl的GET请求</p>
-<a id="more"></a>
 <p><strong>2.POST</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST -d &quot;1234567890&quot; -s -v -- &quot;https://www.baidu.com&quot;</span><br></pre></td></tr></table></figure>
 

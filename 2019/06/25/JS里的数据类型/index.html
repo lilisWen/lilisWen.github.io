@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="liliswen的博客">
 <meta property="og:description" content="前言本文详细介绍JS里的几种数据类型。 JS里的数据类型JS中一共有7种数据类型：Number、String、Boolean、Symbol、null、undefined、Object，通常将Number、String、Boolean合称为原始类型，即它们是最基本的数据类型，不能再细分了。Object则称为合成类型，因为一个对象往往是由很多个原始类型组合而成的。而null、undefined则被称为">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-25T06:47:45.610Z">
+<meta property="og:updated_time" content="2019-06-25T06:48:50.422Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS里的数据类型">
 <meta name="twitter:description" content="前言本文详细介绍JS里的几种数据类型。 JS里的数据类型JS中一共有7种数据类型：Number、String、Boolean、Symbol、null、undefined、Object，通常将Number、String、Boolean合称为原始类型，即它们是最基本的数据类型，不能再细分了。Object则称为合成类型，因为一个对象往往是由很多个原始类型组合而成的。而null、undefined则被称为">
@@ -183,6 +183,7 @@
 <h3 id="1-Number"><a href="#1-Number" class="headerlink" title="1.Number"></a>1.Number</h3><p>在JS中所有的Number值都是以64位浮点数的形式存储（1===1.0），Number可以直接使用字面形式展示，也可以用科学计数法表示。<br><strong>字面形式</strong>指的是用十进制（1），二进制（0b1/0B1）、八进制（01），十六进制（0x1/0X1）表示数字。<br><strong>科学计数法</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">123e3 // 123000</span><br><span class="line">123e-3 // 0.123</span><br><span class="line">-3.1E+12</span><br><span class="line">.1e-23</span><br></pre></td></tr></table></figure>
 
+<a id="more"></a>
 <p>Number中还有几个特殊值：+0、-0、NaN、Infinity。<br><strong>+0、-0</strong><br>除了作为分母时不相等，其他时刻都相同，(1 / +0)结果为+Infinity，(1 / -0)结果为-Infinity。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(1 / +0) === (1 / -0) //false</span><br></pre></td></tr></table></figure>
 
