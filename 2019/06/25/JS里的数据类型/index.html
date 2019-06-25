@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="liliswen的博客">
 <meta property="og:description" content="前言本文详细介绍JS里的几种数据类型。 JS里的数据类型JS中一共有7种数据类型：Number、String、Boolean、Symbol、null、undefined、Object，通常将Number、String、Boolean合称为原始类型，即它们是最基本的数据类型，不能再细分了。Object则称为合成类型，因为一个对象往往是由很多个原始类型组合而成的。而null、undefined则被称为">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-25T06:48:50.422Z">
+<meta property="og:updated_time" content="2019-06-25T06:50:24.742Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS里的数据类型">
 <meta name="twitter:description" content="前言本文详细介绍JS里的几种数据类型。 JS里的数据类型JS中一共有7种数据类型：Number、String、Boolean、Symbol、null、undefined、Object，通常将Number、String、Boolean合称为原始类型，即它们是最基本的数据类型，不能再细分了。Object则称为合成类型，因为一个对象往往是由很多个原始类型组合而成的。而null、undefined则被称为">
@@ -210,7 +210,7 @@
 <p>2.利用’+’链接字符串</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var longString = &apos;a&apos;</span><br><span class="line">+ &apos;b&apos;</span><br><span class="line">+ &apos;c&apos;;</span><br><span class="line"></span><br><span class="line">a</span><br><span class="line">//&apos;abc&apos;</span><br></pre></td></tr></table></figure>
 
-<p><strong>转义字符’&#39;</strong><br>在js中’&#39;可以用来在字符串中输出一些特殊的字符。</p>
+<p><strong>转义字符’\‘</strong><br>在js中’&#39;可以用来在字符串中输出一些特殊的字符。</p>
 <ul>
 <li>\0 ：null（\u0000）</li>
 <li>\b ：后退键（\u0008）</li>
@@ -219,8 +219,8 @@
 <li>\r ：回车键（\u000D）</li>
 <li>\t ：制表符（\u0009）</li>
 <li>\v ：垂直制表符（\u000B）</li>
-<li>&#39; ：单引号（\u0027）</li>
-<li>&quot; ：双引号（\u0022）</li>
+<li>\‘ ：单引号（\u0027）</li>
+<li>\“ ：双引号（\u0022）</li>
 <li>\ ：反斜杠（\u005C）</li>
 </ul>
 <h3 id="3-Boolean"><a href="#3-Boolean" class="headerlink" title="3.Boolean"></a>3.Boolean</h3><p>Boolean只包括true、false两个值。<br><strong>&amp;&amp;</strong><br>且运算，当第一个运算子为true，则返回第二个运算子的结果，如果第一个运算子为false，则返回第一个运算子的结果。<br><strong>||</strong><br>或运算，当第一个运算子为true，则返回第一个运算子的结果且不进行第二个运算，如果第一个运算子为false，则返回第r二个运算子的结果。</p>
