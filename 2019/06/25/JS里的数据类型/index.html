@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>你应该知道的HTML | liliswen的博客</title>
+  <title>JS里的数据类型 | liliswen的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言对于html的初学者，以下几点需要注意 1.W3C到底是什么？W3C全称为World Wide Web Consortium，万维网联盟（World Wide Web Consortium，W3C），又称W3C理事会，是万维网的主要国际标准组织。发展历史万维网联盟（W3C）由蒂姆·伯纳斯-李（李爵士）于1994年10月离开欧洲核子研究中心（CERN）后成立，在欧盟执委会和国防高等研究计划署（D">
+  <meta name="description" content="前言本文详细介绍JS里的几种数据类型。 JS里的数据类型JS中一共有7种数据类型：Number、String、Boolean、Symbol、null、undefined、Object，通常将Number、String、Boolean合称为原始类型，即它们是最基本的数据类型，不能再细分了。Object则称为合成类型，因为一个对象往往是由很多个原始类型组合而成的。而null、undefined则被称为">
 <meta property="og:type" content="article">
-<meta property="og:title" content="你应该知道的HTML">
-<meta property="og:url" content="http://yoursite.com/2019/06/04/你应该知道的HTML/index.html">
+<meta property="og:title" content="JS里的数据类型">
+<meta property="og:url" content="http://yoursite.com/2019/06/25/JS里的数据类型/index.html">
 <meta property="og:site_name" content="liliswen的博客">
-<meta property="og:description" content="前言对于html的初学者，以下几点需要注意 1.W3C到底是什么？W3C全称为World Wide Web Consortium，万维网联盟（World Wide Web Consortium，W3C），又称W3C理事会，是万维网的主要国际标准组织。发展历史万维网联盟（W3C）由蒂姆·伯纳斯-李（李爵士）于1994年10月离开欧洲核子研究中心（CERN）后成立，在欧盟执委会和国防高等研究计划署（D">
+<meta property="og:description" content="前言本文详细介绍JS里的几种数据类型。 JS里的数据类型JS中一共有7种数据类型：Number、String、Boolean、Symbol、null、undefined、Object，通常将Number、String、Boolean合称为原始类型，即它们是最基本的数据类型，不能再细分了。Object则称为合成类型，因为一个对象往往是由很多个原始类型组合而成的。而null、undefined则被称为">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-25T06:48:00.809Z">
+<meta property="og:updated_time" content="2019-06-25T06:47:45.610Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="你应该知道的HTML">
-<meta name="twitter:description" content="前言对于html的初学者，以下几点需要注意 1.W3C到底是什么？W3C全称为World Wide Web Consortium，万维网联盟（World Wide Web Consortium，W3C），又称W3C理事会，是万维网的主要国际标准组织。发展历史万维网联盟（W3C）由蒂姆·伯纳斯-李（李爵士）于1994年10月离开欧洲核子研究中心（CERN）后成立，在欧盟执委会和国防高等研究计划署（D">
+<meta name="twitter:title" content="JS里的数据类型">
+<meta name="twitter:description" content="前言本文详细介绍JS里的几种数据类型。 JS里的数据类型JS中一共有7种数据类型：Number、String、Boolean、Symbol、null、undefined、Object，通常将Number、String、Boolean合称为原始类型，即它们是最基本的数据类型，不能再细分了。Object则称为合成类型，因为一个对象往往是由很多个原始类型组合而成的。而null、undefined则被称为">
   
     <link rel="alternative" href="/atom.xml" title="liliswen的博客" type="application/atom+xml">
   
@@ -158,33 +158,96 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-你应该知道的HTML" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-JS里的数据类型" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      你应该知道的HTML
+      JS里的数据类型
     </h1>
   
 
         
-        <a href="/2019/06/04/你应该知道的HTML/" class="archive-article-date">
-  	<time datetime="2019-06-04T12:48:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-04</time>
+        <a href="/2019/06/25/JS里的数据类型/" class="archive-article-date">
+  	<time datetime="2019-06-25T02:05:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>对于html的初学者，以下几点需要注意</p>
-<h2 id="1-W3C到底是什么？"><a href="#1-W3C到底是什么？" class="headerlink" title="1.W3C到底是什么？"></a>1.W3C到底是什么？</h2><p>W3C全称为<em>World Wide Web Consortium</em>，万维网联盟（World Wide Web Consortium，W3C），又称W3C理事会，是万维网的主要国际标准组织。<br><strong>发展历史</strong><br>万维网联盟（W3C）由<a href="https://zh.wikipedia.org/wiki/%E6%8F%90%E5%A7%86%C2%B7%E6%9F%8F%E5%85%A7%E8%8C%B2-%E6%9D%8E" target="_blank" rel="noopener">蒂姆·伯纳斯-李（李爵士）</a>于1994年10月离开欧洲核子研究中心（CERN）后成立，在欧盟执委会和国防高等研究计划署（DARPA）的支持下成立于麻省理工学院MIT计算机科学与人工智能实验室（MIT／LCS）[2]，DARPA曾率先推出了互联网及其前身ARPANET。</p>
-<a id="more"></a>
-<p><strong>作用</strong><br>不兼容的HTML版本由不同的供应商提供，导致网页显示方式不一致。联盟试图让所有的供应商实施一套由联盟选择的核心原则和组件。所以该组织就制定的新标准来促进业界成员间的兼容性和协议，例如HTML、CSS、XML等标准规范。<br>对我们初学者来说它最大的作用就是可以在<a href="http://www.w3school.com.cn/" target="_blank" rel="noopener">www.w3cschool.com</a>上查询我们想了解的web知识。</p>
-<h2 id="2-MDN是什么？"><a href="#2-MDN是什么？" class="headerlink" title="2.MDN是什么？"></a>2.MDN是什么？</h2><p>我们听到的MDN其实更多的是指MDN Web Docs，MDN Web Docs（旧称Mozilla Developer Network、Mozilla Developer Center，简称MDN）是一个汇集众多Mozilla基金会产品和网络技术开发文档的免费网站。<br>看到这个解释就该知道，这个<a href="https://developer.mozilla.org/zh-CN/" target="_blank" rel="noopener">MDN Web Docs</a>也是拿来查阅web相关知识的一个棒棒的网站。</p>
-<h2 id="3-HTML所有标签列表"><a href="#3-HTML所有标签列表" class="headerlink" title="3.HTML所有标签列表"></a>3.HTML所有标签列表</h2><p>在MDN Web Docs 里我已经给你找到啦<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element" target="_blank" rel="noopener">这是一个链接</a></p>
-<h2 id="4-什么是空标签"><a href="#4-什么是空标签" class="headerlink" title="4.什么是空标签"></a>4.什么是空标签</h2><p>顾名思义，空标签就是不包含任何内容的标签，形象点就是没有闭标签的标签，这样说可能还是有点抽象，举个🌰，&lt;br&gt;标签，我们没有&lt;br&gt;&lt;/br&gt;这样写吧？<br>以下列举一些常见的空标签：<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/area" target="_blank" rel="noopener">&lt;area&gt;</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/base" target="_blank" rel="noopener">&lt;base&gt;</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/br" target="_blank" rel="noopener">&lt;br&gt;</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/col" target="_blank" rel="noopener">&lt;col&gt;</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/colgroup" target="_blank" rel="noopener">&lt;colgroup&gt;</a>when the span is present<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/command" target="_blank" rel="noopener">&lt;command&gt;</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/embed" target="_blank" rel="noopener">&lt;embed&gt;</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/hr" target="_blank" rel="noopener">&lt;hr&gt;</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img" target="_blank" rel="noopener">&lt;img&gt;</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input" target="_blank" rel="noopener">&lt;input&gt;</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/keygen" target="_blank" rel="noopener">&lt;keygen&gt;</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/link" target="_blank" rel="noopener">&lt;link&gt;</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/meta" target="_blank" rel="noopener">&lt;meta&gt;</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/param" target="_blank" rel="noopener">&lt;param&gt;</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/source" target="_blank" rel="noopener">&lt;source&gt;</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/track" target="_blank" rel="noopener">&lt;track&gt;</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/wbr" target="_blank" rel="noopener">&lt;wbr&gt;</a></p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文详细介绍JS里的几种数据类型。</p>
+<h2 id="JS里的数据类型"><a href="#JS里的数据类型" class="headerlink" title="JS里的数据类型"></a>JS里的数据类型</h2><p>JS中一共有7种数据类型：<strong>Number、String、Boolean、Symbol、null、undefined、Object</strong>，通常将Number、String、Boolean合称为原始类型，即它们是最基本的数据类型，不能再细分了。Object则称为合成类型，因为一个对象往往是由很多个原始类型组合而成的。而null、undefined则被称为特殊值。</p>
+<h3 id="1-Number"><a href="#1-Number" class="headerlink" title="1.Number"></a>1.Number</h3><p>在JS中所有的Number值都是以64位浮点数的形式存储（1===1.0），Number可以直接使用字面形式展示，也可以用科学计数法表示。<br><strong>字面形式</strong>指的是用十进制（1），二进制（0b1/0B1）、八进制（01），十六进制（0x1/0X1）表示数字。<br><strong>科学计数法</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">123e3 // 123000</span><br><span class="line">123e-3 // 0.123</span><br><span class="line">-3.1E+12</span><br><span class="line">.1e-23</span><br></pre></td></tr></table></figure>
+
+<p>Number中还有几个特殊值：+0、-0、NaN、Infinity。<br><strong>+0、-0</strong><br>除了作为分母时不相等，其他时刻都相同，(1 / +0)结果为+Infinity，(1 / -0)结果为-Infinity。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(1 / +0) === (1 / -0) //false</span><br></pre></td></tr></table></figure>
+
+<p><strong>NaN</strong><br>NaN表示‘非数字’（Not a Number），主要出现在将字符串解析成数字出错的场合。NaN的类型是Number。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typeof NaN // &apos;number&apos;</span><br></pre></td></tr></table></figure>
+
+<p>判断与NaN是否相等只能使用isNaN，不能使用===。<br>NaN在布尔运算时被当作false。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Boolean(NaN) // false</span><br></pre></td></tr></table></figure>
+
+<p><strong>Infinity</strong><br>Infinity表示‘无穷’，有+、-之分。+Infinity大于任何数（除了NaN），-Infinity小于任何数（除了NaN）。</p>
+<p>Number还可利用<strong>parseInt</strong>进行进制转换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">parseInt(&apos;1000&apos;, 2) // 8</span><br><span class="line">parseInt(&apos;1000&apos;, 6) // 216</span><br><span class="line">parseInt(&apos;1000&apos;, 8) // 512</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-String"><a href="#2-String" class="headerlink" title="2.String"></a>2.String</h3><p>String的形式是 ‘ ‘ 或 “ “ 。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&apos;abc&apos;</span><br><span class="line">&quot;abc&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>多行字符串</strong><br>在写代码的时候，字符串过长想要换行书写，直接按下空格回造成错误</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&apos;a</span><br><span class="line">b</span><br><span class="line">c&apos;</span><br><span class="line">// SyntaxError: Unexpected token ILLEGAL</span><br></pre></td></tr></table></figure>
+
+<p>那么想达到换行的效果有以下几种方法：<br>1.在每一行尾部加上’&#39;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var a = &apos;a\</span><br><span class="line">b\</span><br><span class="line">c;</span><br><span class="line"></span><br><span class="line">a</span><br><span class="line">// &quot;abc&quot;</span><br></pre></td></tr></table></figure>
+
+<p>注意：\后面没有空格直接打回车。</p>
+<p>2.利用’+’链接字符串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var longString = &apos;a&apos;</span><br><span class="line">+ &apos;b&apos;</span><br><span class="line">+ &apos;c&apos;;</span><br><span class="line"></span><br><span class="line">a</span><br><span class="line">//&apos;abc&apos;</span><br></pre></td></tr></table></figure>
+
+<p><strong>转义字符’&#39;</strong><br>在js中’&#39;可以用来在字符串中输出一些特殊的字符。</p>
+<ul>
+<li>\0 ：null（\u0000）</li>
+<li>\b ：后退键（\u0008）</li>
+<li>\f ：换页符（\u000C）</li>
+<li>\n ：换行符（\u000A）</li>
+<li>\r ：回车键（\u000D）</li>
+<li>\t ：制表符（\u0009）</li>
+<li>\v ：垂直制表符（\u000B）</li>
+<li>&#39; ：单引号（\u0027）</li>
+<li>&quot; ：双引号（\u0022）</li>
+<li>\ ：反斜杠（\u005C）</li>
+</ul>
+<h3 id="3-Boolean"><a href="#3-Boolean" class="headerlink" title="3.Boolean"></a>3.Boolean</h3><p>Boolean只包括true、false两个值。<br><strong>&amp;&amp;</strong><br>且运算，当第一个运算子为true，则返回第二个运算子的结果，如果第一个运算子为false，则返回第一个运算子的结果。<br><strong>||</strong><br>或运算，当第一个运算子为true，则返回第一个运算子的结果且不进行第二个运算，如果第一个运算子为false，则返回第r二个运算子的结果。</p>
+<h3 id="4-Null-amp-Undefined"><a href="#4-Null-amp-Undefined" class="headerlink" title="4.Null&amp;Undefined"></a>4.Null&amp;Undefined</h3><p><strong>Null与Undefined的区别</strong><br>若变量没有赋值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var a</span><br><span class="line">a//undefinde</span><br></pre></td></tr></table></figure>
+
+<p>一个对象现在不想赋值，则可以先使其为null</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var a = null</span><br><span class="line">typeof a //object</span><br></pre></td></tr></table></figure>
+
+<p>函数没有返回值时，默认返回 undefined</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">function f() &#123;&#125;</span><br><span class="line">f() // undefined</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-Object"><a href="#5-Object" class="headerlink" title="5.Object"></a>5.Object</h3><p>Object简单来说就是由”key：value”键值对组成的hash表，在这里要强调的是初始化Object时，键值对的顺序和输出时键值对的顺序无关。<br><strong>初始化</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var object = &#123;</span><br><span class="line">    &apos;key1&apos;:value1,</span><br><span class="line">    &apos;key2&apos;:value2</span><br><span class="line">&#125;//在ES5以上键值对之间要利用逗号隔开</span><br><span class="line"></span><br><span class="line">var object = new object()</span><br><span class="line"></span><br><span class="line">var object = Object.create(Object.prototype)</span><br></pre></td></tr></table></figure>
+
+<p>Object的所有键名都是字符串，可以把键名写作数字，但是JS会自动把他理解成字符串，如果键名不加引号那么键名必须符合标识名规则，即不能以数字开头，不能包含空格以及运算符。</p>
+<p><strong>Object属性的调用方法</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">object.key//key必须符合标识名规范</span><br><span class="line">object[&apos;key&apos;]//与上一条等价</span><br><span class="line">a = &apos;key&apos;</span><br><span class="line">object[a]//作为变量调用</span><br><span class="line"></span><br><span class="line">a = &apos;key&apos;</span><br><span class="line">object.a//报错</span><br></pre></td></tr></table></figure>
+
+<p><strong>Object的遍历</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">for(var key in person)&#123;</span><br><span class="line">//错误写法</span><br><span class="line">Console.log(person.key)//等价于person[‘key’]</span><br><span class="line">//正确写法</span><br><span class="line">console.log(person[key])//key是变量</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Object属性删除</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">delete object.key//key和value同时被删除</span><br><span class="line"></span><br><span class="line">object.key = undefinde//只删除value</span><br></pre></td></tr></table></figure>
+
+<h3 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h3><p>typeof可查看一个元素的类别。<br><strong>typeof的两个BUG</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">typeof null //‘object’</span><br><span class="line">typeof fuction//‘function’</span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -264,7 +327,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/06/04/你应该知道的HTML/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/06/25/JS里的数据类型/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -278,18 +341,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/06/05/HTML的常见标签详解/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          HTML的常见标签详解
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/06/03/HTTP的请求、响应以及curl命令行/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">通过curl认知HTTP的请求、响应</div>
+    <a href="/2019/06/09/CSS常见布局问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CSS常见布局问题</div>
       <i class="icon-circle-right"></i>
     </a>
   
