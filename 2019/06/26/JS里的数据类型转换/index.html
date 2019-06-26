@@ -6,15 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | liliswen的博客</title>
+  <title>JS里的数据类型转换 | liliswen的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="liliswen的博客">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="前言上一篇文章已经介绍了JS里的数据类型,本文将接着介绍JS里几种数据类型之间的转换。 1.任意类型转String类型对于任意类型转换为String类型，一般来说是有三种方法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS里的数据类型转换">
+<meta property="og:url" content="http://yoursite.com/2019/06/26/JS里的数据类型转换/index.html">
 <meta property="og:site_name" content="liliswen的博客">
+<meta property="og:description" content="前言上一篇文章已经介绍了JS里的数据类型,本文将接着介绍JS里几种数据类型之间的转换。 1.任意类型转String类型对于任意类型转换为String类型，一般来说是有三种方法。">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/JS%E9%87%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/String().png">
+<meta property="og:image" content="http://yoursite.com/images/JS%E9%87%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/x.toString().png">
+<meta property="og:image" content="http://yoursite.com/images/JS%E9%87%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/%27%27+x.png">
+<meta property="og:image" content="http://yoursite.com/images/JS%E9%87%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/Number.png">
+<meta property="og:image" content="http://yoursite.com/images/JS%E9%87%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/parseInt.png">
+<meta property="og:image" content="http://yoursite.com/images/JS%E9%87%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/Boolean.png">
+<meta property="og:updated_time" content="2019-06-26T02:04:59.676Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="liliswen的博客">
+<meta name="twitter:title" content="JS里的数据类型转换">
+<meta name="twitter:description" content="前言上一篇文章已经介绍了JS里的数据类型,本文将接着介绍JS里几种数据类型之间的转换。 1.任意类型转String类型对于任意类型转换为String类型，一般来说是有三种方法。">
+<meta name="twitter:image" content="http://yoursite.com/images/JS%E9%87%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/String().png">
   
     <link rel="alternative" href="/atom.xml" title="liliswen的博客" type="application/atom+xml">
   
@@ -154,211 +165,189 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-JS里的数据类型转换" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      JS里的数据类型转换
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/26/JS里的数据类型转换/" class="archive-article-date">
+
+        
+        <a href="/2019/06/26/JS里的数据类型转换/" class="archive-article-date">
   	<time datetime="2019-06-26T00:45:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-26</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/26/JS里的数据类型转换/">JS里的数据类型转换</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上一篇文章已经介绍了<a href="https://liliswen.github.io/2019/06/25/JS%E9%87%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" target="_blank" rel="noopener">JS里的数据类型</a>,本文将接着介绍JS里几种数据类型之间的转换。</p>
+<h3 id="1-任意类型转String类型"><a href="#1-任意类型转String类型" class="headerlink" title="1.任意类型转String类型"></a>1.任意类型转String类型</h3><p>对于任意类型转换为String类型，一般来说是有三种方法。</p>
+<a id="more"></a>
+<ul>
+<li>String()<br><img src="/images/JS%E9%87%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/String().png" alt></li>
+<li>x.toString()<br><img src="/images/JS%E9%87%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/x.toString().png" alt></li>
+<li>‘’+x<br><img src="/images/JS%E9%87%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/''+x.png" alt></li>
+<li><em>推荐使用第三种方法*</em></li>
+</ul>
+<h3 id="2-任意类型转Number类型"><a href="#2-任意类型转Number类型" class="headerlink" title="2.任意类型转Number类型"></a>2.任意类型转Number类型</h3><p>除了String、Boolean类型其余类型转为Number类型后均为NaN。</p>
+<ul>
+<li><p>Number()<br><img src="/images/JS%E9%87%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/Number.png" alt></p>
+</li>
+<li><p>parseInt()<br><img src="/images/JS%E9%87%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/parseInt.png" alt></p>
+</li>
+<li><p>parseFloat()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parseFloat(&apos;1.23&apos;)//1.23</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>x-0<br>除加法外其他所有运算符，都会自动把运算符两侧转换成数字来进行相应的运算。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;1&apos;-0//1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>+x<br>取正</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+&apos;1&apos;</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
+</li>
+</ul>
+<p>**注意：除parseInt()以外的其他方法都不能对既有数字又有字母或其他符号的字符串进行转型。</p>
+<h3 id="3-任意类型转Boolean"><a href="#3-任意类型转Boolean" class="headerlink" title="3.任意类型转Boolean"></a>3.任意类型转Boolean</h3><ul>
+<li>Boolean()<br>只有以下五种转换为Boolean类型为false其余均为ture，object所有值均为ture<br><img src="/images/JS%E9%87%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/Boolean.png" alt></li>
+<li>!!x<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">!!&apos;&apos;\\false</span><br><span class="line">!!&apos;123&apos;\\true</span><br></pre></td></tr></table></figure>
 
+</li>
+</ul>
+<p><strong>推荐使用第二种方法</strong></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/06/26/JS里的数据类型转换/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/25/JS里的数据类型/" class="archive-article-date">
-  	<time datetime="2019-06-25T02:05:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-25</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/06/25/JS里的数据类型/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JS里的数据类型</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/25/JS里的数据类型/">JS里的数据类型</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/09/CSS常见布局问题/" class="archive-article-date">
-  	<time datetime="2019-06-09T02:26:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/09/CSS常见布局问题/">CSS常见布局问题</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/05/HTML的常见标签详解/" class="archive-article-date">
-  	<time datetime="2019-06-05T14:03:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/05/HTML的常见标签详解/">HTML的常见标签详解</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/04/你应该知道的HTML/" class="archive-article-date">
-  	<time datetime="2019-06-04T12:48:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/04/你应该知道的HTML/">你应该知道的HTML</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/03/HTTP的请求、响应以及curl命令行/" class="archive-article-date">
-  	<time datetime="2019-06-03T12:27:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/03/HTTP的请求、响应以及curl命令行/">通过curl认知HTTP的请求、响应</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/31/常见命令行的使用/" class="archive-article-date">
-  	<time datetime="2019-05-31T10:58:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/31/常见命令行的使用/">常见命令行的使用</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -381,8 +370,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
