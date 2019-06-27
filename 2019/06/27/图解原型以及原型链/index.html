@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>图解原型以及原型链 | liliswen的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言前两篇文章中已经详解了JS中的几个重要类型，在介绍Object类型时提到创建Object对象的方法有三种，其中一种是var n = new Object( )， Object()函数是全局对象window的一个函数，不只是Object可以这样定义变量，String、Number、Boolean均可，那么这些利用全局对象的函数创建的变量，与直接利用var创建的变量有什么不同呢？很显然他们创建的都">
+  <meta name="description" content="前言">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图解原型以及原型链">
 <meta property="og:url" content="http://yoursite.com/2019/06/27/图解原型以及原型链/index.html">
 <meta property="og:site_name" content="liliswen的博客">
-<meta property="og:description" content="前言前两篇文章中已经详解了JS中的几个重要类型，在介绍Object类型时提到创建Object对象的方法有三种，其中一种是var n = new Object( )， Object()函数是全局对象window的一个函数，不只是Object可以这样定义变量，String、Number、Boolean均可，那么这些利用全局对象的函数创建的变量，与直接利用var创建的变量有什么不同呢？很显然他们创建的都">
+<meta property="og:description" content="前言">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/%E5%8E%9F%E5%9E%8B/%E5%8E%9F%E5%9E%8B%E5%8F%8A%E5%8E%9F%E5%9E%8B%E9%93%BE.png">
-<meta property="og:updated_time" content="2019-06-27T06:54:23.523Z">
+<meta property="og:updated_time" content="2019-06-27T06:58:03.228Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图解原型以及原型链">
-<meta name="twitter:description" content="前言前两篇文章中已经详解了JS中的几个重要类型，在介绍Object类型时提到创建Object对象的方法有三种，其中一种是var n = new Object( )， Object()函数是全局对象window的一个函数，不只是Object可以这样定义变量，String、Number、Boolean均可，那么这些利用全局对象的函数创建的变量，与直接利用var创建的变量有什么不同呢？很显然他们创建的都">
+<meta name="twitter:description" content="前言">
 <meta name="twitter:image" content="http://yoursite.com/images/%E5%8E%9F%E5%9E%8B/%E5%8E%9F%E5%9E%8B%E5%8F%8A%E5%8E%9F%E5%9E%8B%E9%93%BE.png">
   
     <link rel="alternative" href="/atom.xml" title="liliswen的博客" type="application/atom+xml">
@@ -180,7 +180,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前两篇文章中已经详解了JS中的几个重要类型，在介绍Object类型时提到创建Object对象的方法有三种，其中一种是var n = new Object( )， Object()函数是全局对象window的一个函数，不只是Object可以这样定义变量，String、Number、Boolean均可，那么这些利用全局对象的函数创建的变量，与直接利用var创建的变量有什么不同呢？很显然他们创建的都是对象，而直接利用var n = 1，创建的不是对象，但为什么我们有时又可以通过a.函数名调用函数呢？很奇怪对吧？明明不是对象却可以调用函数，这是因为，在JS中如果直接对一个变量加上’.’调用函数，JS会自动根据类型创建一个临时对象temp = new Number(),然后再去调用其中的函数方法。创建对象时在内存中都会发生什么变化呢？那么本文将会图解利用Number()、String()、Boolean()、Object()创建对象后在内存里到底发生了什么，以此来讲解原型以及原型链。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><!--<!--前两篇文章中已经详解了JS中的几个重要类型，在介绍Object类型时提到创建Object对象的方法有三种，其中一种是var n = new Object( )， Object()函数是全局对象window的一个函数，不只是Object可以这样定义变量，String、Number、Boolean均可，那么这些利用全局对象的函数创建的变量，与直接利用var创建的变量有什么不同呢？很显然他们创建的都是对象，而直接利用var n = 1，创建的不是对象，但为什么我们有时又可以通过a.函数名调用函数呢？很奇怪对吧？明明不是对象却可以调用函<a id="more"></a>数，这是因为，在JS中如果直接对一个变量加上'.'调用函数，JS会自动根据类型创建一个临时对象temp = new Number(),然后再去调用其中的函数方法。创建对象时在内存中都会发生什么变化呢？那么本文将会图解利用Number()、String()、Boolean()、Object()创建对象后在内存里到底发生了什么，以此来讲解原型以及原型链。-->-->
+
 <h3 id="1-全局对象-window"><a href="#1-全局对象-window" class="headerlink" title="1.全局对象 window"></a>1.全局对象 window</h3><p>ECMAScript 规定全局对象叫做 global，但是浏览器把 window 作为全局对象（浏览器先存在的），在上文中提到的Number()、String()、Boolean()、Object()是全局对象Window的全局函数。</p>
 <h3 id="2-创建对象后内存里发生了什么"><a href="#2-创建对象后内存里发生了什么" class="headerlink" title="2.创建对象后内存里发生了什么"></a>2.创建对象后内存里发生了什么</h3><p>在看图之前，不知道大家有没有发现在所有对象中都有valueOf()以及toString()方法，那么JS可能会给每一个对象都申请一块内存拿来存放这些相同的方法吗？当然不会，他又不傻！不只是这两个方法，还有很多Number、String、Boolean、Object各个类型对象自己共有的方法，那么JS就把这些方法提炼出来按照不同的类型划分成几个共有对象放在内存中，在创造新的对象时就直接应用这些对象就可以了，这样是不是节约了超多内存空间呢！<br>但是了解过垃圾回收机制的同学可能就要发出疑问了，如果把这些对象直接放在内存中，在什么代码都没写没有新建对象的时候，这些共有对象不就会被当成垃圾回收？JS当然解决了这个问题，我们之前提到的全局对象window中的Number()、String()、Boolean()、Object()这些全局函数（函数也是可以看作是对象），就会引用到那些共用属性，那么我们一直说的共用属性就是原型啦！原型也分两种，一种就是我们说的普通对象引用时的原型（__proto__）,另一种是全局函数引用的原型（prototype），通过window的全局函数引用这些原型的这条链路就叫原型链。<br>了解了这些概念后我们再来看看下图。（形似某1的是利用var n = new 函数() 创建的对象，某2就是var n = XXX创建的。n-Number,s-String,b-Boolean,o-Object）<br><img src="/images/%E5%8E%9F%E5%9E%8B/%E5%8E%9F%E5%9E%8B%E5%8F%8A%E5%8E%9F%E5%9E%8B%E9%93%BE.png" alt></p>
 <p> 这里面有个特殊的Object.prototype.__proto__ = null(避免死循环)</p>
