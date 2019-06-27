@@ -6,15 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>liliswen的博客</title>
+  <title>图解原型以及原型链 | liliswen的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="liliswen的博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="前言前两篇文章中已经详解了JS中的几个重要类型，在介绍Object类型时提到创建Object对象的方法有三种，其中一种是var n = new Object( )， Object()函数是全局对象window的一个函数，不只是Object可以这样定义变量，String、Number、Boolean均可，那么这些利用全局对象的函数创建的变量，与直接利用var创建的变量有什么不同呢？很显然他们创建的都">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图解原型以及原型链">
+<meta property="og:url" content="http://yoursite.com/2019/06/27/图解原型以及原型链/index.html">
 <meta property="og:site_name" content="liliswen的博客">
+<meta property="og:description" content="前言前两篇文章中已经详解了JS中的几个重要类型，在介绍Object类型时提到创建Object对象的方法有三种，其中一种是var n = new Object( )， Object()函数是全局对象window的一个函数，不只是Object可以这样定义变量，String、Number、Boolean均可，那么这些利用全局对象的函数创建的变量，与直接利用var创建的变量有什么不同呢？很显然他们创建的都">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/%E5%8E%9F%E5%9E%8B/%E5%8E%9F%E5%9E%8B%E5%8F%8A%E5%8E%9F%E5%9E%8B%E9%93%BE.png">
+<meta property="og:updated_time" content="2019-06-27T06:54:23.523Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="liliswen的博客">
+<meta name="twitter:title" content="图解原型以及原型链">
+<meta name="twitter:description" content="前言前两篇文章中已经详解了JS中的几个重要类型，在介绍Object类型时提到创建Object对象的方法有三种，其中一种是var n = new Object( )， Object()函数是全局对象window的一个函数，不只是Object可以这样定义变量，String、Number、Boolean均可，那么这些利用全局对象的函数创建的变量，与直接利用var创建的变量有什么不同呢？很显然他们创建的都">
+<meta name="twitter:image" content="http://yoursite.com/images/%E5%8E%9F%E5%9E%8B/%E5%8E%9F%E5%9E%8B%E5%8F%8A%E5%8E%9F%E5%9E%8B%E9%93%BE.png">
   
     <link rel="alternative" href="/atom.xml" title="liliswen的博客" type="application/atom+xml">
   
@@ -154,16 +160,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-图解原型以及原型链" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-图解原型以及原型链" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/27/图解原型以及原型链/">图解原型以及原型链</a>
+    <h1 class="article-title" itemprop="name">
+      图解原型以及原型链
     </h1>
   
 
@@ -190,6 +194,27 @@
       
 
       
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
     </div>
     <div class="article-info article-info-index">
       
@@ -197,16 +222,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/27/图解原型以及原型链/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/06/27/图解原型以及原型链/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/06/26/JS里的数据类型转换/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JS里的数据类型转换</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -226,479 +310,14 @@
 
 
 
-
   
-    <article id="post-JS里的数据类型转换" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/26/JS里的数据类型转换/">JS里的数据类型转换</a>
-    </h1>
   
 
-        
-        <a href="/2019/06/26/JS里的数据类型转换/" class="archive-article-date">
-  	<time datetime="2019-06-26T00:45:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上一篇文章已经介绍了<a href="https://liliswen.github.io/2019/06/25/JS%E9%87%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" target="_blank" rel="noopener">JS里的数据类型</a>,本文将接着介绍JS里几种数据类型之间的转换。</p>
-<h3 id="1-任意类型转String类型"><a href="#1-任意类型转String类型" class="headerlink" title="1.任意类型转String类型"></a>1.任意类型转String类型</h3><p>对于任意类型转换为String类型，一般来说是有三种方法。</p>
-        
-          <a class="article-more-a" href="/2019/06/26/JS里的数据类型转换/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/26/JS里的数据类型转换/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JS里的数据类型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/25/JS里的数据类型/">JS里的数据类型</a>
-    </h1>
   
 
-        
-        <a href="/2019/06/25/JS里的数据类型/" class="archive-article-date">
-  	<time datetime="2019-06-25T02:05:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文详细介绍JS里的几种数据类型。</p>
-<h2 id="JS里的数据类型"><a href="#JS里的数据类型" class="headerlink" title="JS里的数据类型"></a>JS里的数据类型</h2><p>JS中一共有7种数据类型：<strong>Number、String、Boolean、Symbol、null、undefined、Object</strong>，通常将Number、String、Boolean合称为原始类型，即它们是最基本的数据类型，不能再细分了。Object则称为合成类型，因为一个对象往往是由很多个原始类型组合而成的。而null、undefined则被称为特殊值。</p>
-<h3 id="1-Number"><a href="#1-Number" class="headerlink" title="1.Number"></a>1.Number</h3><p>在JS中所有的Number值都是以64位浮点数的形式存储（1===1.0），Number可以直接使用字面形式展示，也可以用科学计数法表示。<br><strong>字面形式</strong>指的是用十进制（1），二进制（0b1/0B1）、八进制（01），十六进制（0x1/0X1）表示数字。<br><strong>科学计数法</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">123e3 // 123000</span><br><span class="line">123e-3 // 0.123</span><br><span class="line">-3.1E+12</span><br><span class="line">.1e-23</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2019/06/25/JS里的数据类型/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/25/JS里的数据类型/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-CSS常见布局问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/09/CSS常见布局问题/">CSS常见布局问题</a>
-    </h1>
   
 
-        
-        <a href="/2019/06/09/CSS常见布局问题/" class="archive-article-date">
-  	<time datetime="2019-06-09T02:26:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文介绍几种常见的布局问题，左右布局、左右中布局、水平居中、垂直居中。</p>
-<h2 id="左右布局"><a href="#左右布局" class="headerlink" title="左右布局"></a>左右布局</h2><p>左右布局又称两栏布局，对于这类布局我们通常可以采用两种做法。<br><strong>1.float</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.left&#123;</span><br><span class="line">    float: left;</span><br><span class="line">&#125;</span><br><span class="line">.right&#123;</span><br><span class="line">    float: right;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2019/06/09/CSS常见布局问题/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/09/CSS常见布局问题/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-HTML的常见标签详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/05/HTML的常见标签详解/">HTML的常见标签详解</a>
-    </h1>
-  
-
-        
-        <a href="/2019/06/05/HTML的常见标签详解/" class="archive-article-date">
-  	<time datetime="2019-06-05T14:03:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文介绍几个常见的HTML标签&lt;a&gt;,&lt;ifram&gt;,&lt;form&gt;,&lt;table&gt;的你不知道的知识。</p>
-<h3 id="1-lt-a-gt-标签"><a href="#1-lt-a-gt-标签" class="headerlink" title="1.&lt;a&gt;标签"></a>1.&lt;a&gt;标签</h3><p><strong>HTML <a> 元素(或称锚元素)</a></strong> 可以创建通向其他网页、文件、同一页面内的位置、电子邮件地址或任何其他 URL 的超链接。（发送GET请求）<br>在&lt;a&gt;标签中我门时常会加上<strong>href</strong>，那么href里到底可以填什么内容，并且都有什么不同的作用呢？<br>1.完整的网页链接<br>例如: “<a href="https://www.baidu.com&quot;" target="_blank" rel="noopener">https://www.baidu.com&quot;</a> 一个完整的链接包含所使用的协议（http\https\file…）+域名<br>当href等于一个完整的网页链接时，当我们点击&lt;a&gt;标签时，就会像该网页发送一个GET请求。<br>2.不完整的网页链接<br>例如：”//<a href="http://www.baidu.com&quot;" target="_blank" rel="noopener">www.baidu.com&quot;</a><br>当href等于一个形如”//<a href="http://www.baidu.com&quot;" target="_blank" rel="noopener">www.baidu.com&quot;</a> 的网页链接时，在我们点击a标签时，浏览器会根据当前网络的协议自动补全网址，并发起一个GET请求。<br><strong>注意：</strong> 此时，千万不能使用file协议去访问html文件，否则无法正确发起GET请求。(否则将会造成如下后果)</p>
-        
-          <a class="article-more-a" href="/2019/06/05/HTML的常见标签详解/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/05/HTML的常见标签详解/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-你应该知道的HTML" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/04/你应该知道的HTML/">你应该知道的HTML</a>
-    </h1>
-  
-
-        
-        <a href="/2019/06/04/你应该知道的HTML/" class="archive-article-date">
-  	<time datetime="2019-06-04T12:48:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>对于html的初学者，以下几点需要注意</p>
-<h2 id="1-W3C到底是什么？"><a href="#1-W3C到底是什么？" class="headerlink" title="1.W3C到底是什么？"></a>1.W3C到底是什么？</h2><p>W3C全称为<em>World Wide Web Consortium</em>，万维网联盟（World Wide Web Consortium，W3C），又称W3C理事会，是万维网的主要国际标准组织。<br><strong>发展历史</strong><br>万维网联盟（W3C）由<a href="https://zh.wikipedia.org/wiki/%E6%8F%90%E5%A7%86%C2%B7%E6%9F%8F%E5%85%A7%E8%8C%B2-%E6%9D%8E" target="_blank" rel="noopener">蒂姆·伯纳斯-李（李爵士）</a>于1994年10月离开欧洲核子研究中心（CERN）后成立，在欧盟执委会和国防高等研究计划署（DARPA）的支持下成立于麻省理工学院MIT计算机科学与人工智能实验室（MIT／LCS）[2]，DARPA曾率先推出了互联网及其前身ARPANET。</p>
-        
-          <a class="article-more-a" href="/2019/06/04/你应该知道的HTML/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/04/你应该知道的HTML/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-HTTP的请求、响应以及curl命令行" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/03/HTTP的请求、响应以及curl命令行/">通过curl认知HTTP的请求、响应</a>
-    </h1>
-  
-
-        
-        <a href="/2019/06/03/HTTP的请求、响应以及curl命令行/" class="archive-article-date">
-  	<time datetime="2019-06-03T12:27:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在我们日常浏览网页的过程，实际是客户端向服务器发送HTTP请求，而服务器接收到请求后，返回给客户端一个HTTP响应的过程，接下来本文将通过curl访问<a href="https://www.baidu.cam来讲解HTTP的请求与响应。" target="_blank" rel="noopener">https://www.baidu.cam来讲解HTTP的请求与响应。</a></p>
-<h2 id="HTTP的请求"><a href="#HTTP的请求" class="headerlink" title="HTTP的请求"></a>HTTP的请求</h2><p><strong>1.GET</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s -v -H &quot;Frank: xxx&quot; -- &quot;https://www.baidu.com&quot;//通过curl向https://www.baidu.cam发送请求</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2019/06/03/HTTP的请求、响应以及curl命令行/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/03/HTTP的请求、响应以及curl命令行/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-常见命令行的使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/31/常见命令行的使用/">常见命令行的使用</a>
-    </h1>
-  
-
-        
-        <a href="/2019/05/31/常见命令行的使用/" class="archive-article-date">
-  	<time datetime="2019-05-31T10:58:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文描述了ls、cat、mv、touch四个常用命令，其余常用命令可查看<a href="https://explainshell.com" target="_blank" rel="noopener">explainshell.com</a>网站，了解更多常用命令行使用方法。（具体查阅方法在本文结束时介绍）</p>
-<h2 id="一、ls"><a href="#一、ls" class="headerlink" title="一、ls"></a>一、ls</h2><p><strong>1. ls</strong><br>ls即为list,是用来输出当前目录下的所有文件以及目录名（不包括隐藏文件）</p>
-<p><strong>2.ls -l</strong><br>-l，以长列表形式显示文件和目录的类型、权限、链接数、所属用户、所属组、大小（以字节为单位）、最近修改日期、文件名。（排列顺序与显示顺序相同）<br>eg：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-rw-r--r--@   1 lilis  staff    2172  5 31 18:53 _config.yml</span><br></pre></td></tr></table></figure>
-
-<p><strong>3.ls -a</strong><br>-a，列出包括隐藏文件和目录、以及“.”、“..”在内的所有文件。</p>
-<p><strong>4.ls -al</strong><br>-al即-a与-l联合使用，显示所有文件的详细信息。</p>
-        
-          <a class="article-more-a" href="/2019/05/31/常见命令行的使用/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/31/常见命令行的使用/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
 
 
@@ -721,8 +340,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
