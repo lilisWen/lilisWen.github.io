@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019 | liliswen的博客</title>
+  <title>实现一个jQuery的API | liliswen的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="liliswen的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2019/index.html">
+  <meta name="description" content="1. 需求分析12345window.jQuery = ???window.$ = jQueryvar $div = $(&amp;apos;div&amp;apos;)$div.addClass(&amp;apos;red&amp;apos;) // 可将所有 div 的 class 添加一个 red$div.setText(&amp;apos;hi&amp;apos;) // 可将所有 div 的 textContent 变为 hi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="实现一个jQuery的API">
+<meta property="og:url" content="http://yoursite.com/2019/07/02/实现一个jQuery的API/index.html">
 <meta property="og:site_name" content="liliswen的博客">
+<meta property="og:description" content="1. 需求分析12345window.jQuery = ???window.$ = jQueryvar $div = $(&amp;apos;div&amp;apos;)$div.addClass(&amp;apos;red&amp;apos;) // 可将所有 div 的 class 添加一个 red$div.setText(&amp;apos;hi&amp;apos;) // 可将所有 div 的 textContent 变为 hi">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-02T06:40:07.510Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="liliswen的博客">
+<meta name="twitter:title" content="实现一个jQuery的API">
+<meta name="twitter:description" content="1. 需求分析12345window.jQuery = ???window.$ = jQueryvar $div = $(&amp;apos;div&amp;apos;)$div.addClass(&amp;apos;red&amp;apos;) // 可将所有 div 的 class 添加一个 red$div.setText(&amp;apos;hi&amp;apos;) // 可将所有 div 的 textContent 变为 hi">
   
     <link rel="alternative" href="/atom.xml" title="liliswen的博客" type="application/atom+xml">
   
@@ -154,265 +158,178 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-实现一个jQuery的API" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      实现一个jQuery的API
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/02/实现一个jQuery的API/" class="archive-article-date">
+
+        
+        <a href="/2019/07/02/实现一个jQuery的API/" class="archive-article-date">
   	<time datetime="2019-07-02T05:36:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-02</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/02/实现一个jQuery的API/">实现一个jQuery的API</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-需求分析"><a href="#1-需求分析" class="headerlink" title="1. 需求分析"></a>1. 需求分析</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">window.jQuery = ???</span><br><span class="line">window.$ = jQuery</span><br><span class="line">var $div = $(&apos;div&apos;)</span><br><span class="line">$div.addClass(&apos;red&apos;) // 可将所有 div 的 class 添加一个 red</span><br><span class="line">$div.setText(&apos;hi&apos;) // 可将所有 div 的 textContent 变为 hi</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
+<a id="more"></a>
+<h2 id="2-理清思路"><a href="#2-理清思路" class="headerlink" title="2.理清思路"></a>2.理清思路</h2><p>首先要明白，要写一个jQuery的API到底是什么意思？从上面的需求可知，写API就是写函数方法。如何写一个函数？</p>
+<ol>
+<li>确定参数</li>
+<li>根据功能点，理清实现逻辑</li>
+<li>确定有无返回值</li>
+<li>封装函数并优化代码</li>
+</ol>
+<h2 id="3-具体实现"><a href="#3-具体实现" class="headerlink" title="3.具体实现"></a>3.具体实现</h2><p>根据需求，要完成一个可将所有 div 的 class 添加一个 red功能以及可将所有 div 的 textContent 变为 hi的功能，不管是这两个中的哪一个，都应该先获取节点，接下来才能对节点进行操作。</p>
+<h3 id="1-获取节点"><a href="#1-获取节点" class="headerlink" title="1.获取节点"></a>1.获取节点</h3><p>根据传入参数判断是节点还是字符串，如果是字符串则通过document.quereySelectorAll()获取节点，该方法返回的是一个伪数组，但里面还有其他的一些自动生成的方法，为了之后使用的便利，我使用一个中间数组存储获取到的节点，然后遍历该数组进行一个‘提纯’操作，只把节点剥离出来，放进一个新的干净的对象里构成一个伪数组<br>如果传入的是一个节点，为了之后统一操作对象，就把这个节点放入一个伪数组中，将伪数组的length置1。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function(nodeOrSelector)&#123;</span><br><span class="line">    let nodes = &#123;&#125;</span><br><span class="line">    if (typeof nodeOrSelector === &apos;string&apos;) &#123;</span><br><span class="line">        let temp = document.querySelectorAll(nodeOrSelector)</span><br><span class="line">        console.log(temp)</span><br><span class="line">        for (let i = 0; i &lt; temp.length; i++) &#123;</span><br><span class="line">        nodes[i] = temp[i]</span><br><span class="line">        &#125;</span><br><span class="line">        nodes.length = temp.length</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        nodes = &#123;</span><br><span class="line">        0: nodeOrSelector,</span><br><span class="line">        length: 1</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return nodes</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h3 id="2-addClass-函数"><a href="#2-addClass-函数" class="headerlink" title="2.addClass 函数"></a>2.addClass 函数</h3><p>首先要对节点进行class的添加，肯定先要把class的表传进来，对class表进行遍历，对value为true的class进行add，value为false的class进行remove，那么我们要操作的节点也不只是一个，所以我们要把nodes伪数组遍历一遍，把所有的节点都添加或删除相应的class。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function addclass(classes) &#123;</span><br><span class="line">    for (let key in classes) &#123;</span><br><span class="line">        var value = classes[key]</span><br><span class="line">        var method = value ? &apos;add&apos; : &apos;remove&apos;</span><br><span class="line">        for (let j = 0; j &lt; nodes.length; j++) &#123;</span><br><span class="line">            nodes[j].classList[method](key)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里nodes是作为一个全局的参数，所以我们这里相当于是一个闭包。</p>
+<h3 id="3-text-函数"><a href="#3-text-函数" class="headerlink" title="3.text 函数"></a>3.text 函数</h3><p>在需求的基础上，可添加一个如果没有参数传进来，那么我们就直接获取当前的节点的文本内容返回。传入的参数有值时，就把这个参数设置为节点的文本内容（textContent）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function (text) &#123;</span><br><span class="line">    if (text === undefined) &#123;</span><br><span class="line">        var texts = []</span><br><span class="line">        for (let j = 0; j &lt; nodes.length; j++) &#123;</span><br><span class="line">        texts.push(nodes[j].textContent)</span><br><span class="line">        &#125;</span><br><span class="line">        return texts</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        for (let j = 0; j &lt; nodes.length; j++) &#123;</span><br><span class="line">            nodes[j].textContent = text</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-封装函数"><a href="#4-封装函数" class="headerlink" title="4.封装函数"></a>4.封装函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">window.jQuery = function (nodeOrSelector) &#123;</span><br><span class="line">    let nodes = &#123;&#125;</span><br><span class="line">    if (typeof nodeOrSelector === &apos;string&apos;) &#123;</span><br><span class="line">        let temp = document.querySelectorAll(nodeOrSelector)</span><br><span class="line">        console.log(temp)</span><br><span class="line">        for (let i = 0; i &lt; temp.length; i++) &#123;</span><br><span class="line">            nodes[i] = temp[i]</span><br><span class="line">        &#125;</span><br><span class="line">        nodes.length = temp.length</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        nodes = &#123;</span><br><span class="line">        0: nodeOrSelector,</span><br><span class="line">        length: 1</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    nodes.addClass = function (classes) &#123;</span><br><span class="line">        for (let key in classes) &#123;</span><br><span class="line">            var value = classes[key]</span><br><span class="line">            var method = value ? &apos;add&apos; : &apos;remove&apos;</span><br><span class="line">            for (let j = 0; j &lt; nodes.length; j++) &#123;</span><br><span class="line">                nodes[j].classList[method](key)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    nodes.text = function (text) &#123;</span><br><span class="line">        if (text === undefined) &#123;</span><br><span class="line">            var texts = []</span><br><span class="line">            for (let j = 0; j &lt; nodes.length; j++) &#123;</span><br><span class="line">                texts.push(nodes[j].textContent)</span><br><span class="line">            &#125;</span><br><span class="line">            return texts</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            for (let j = 0; j &lt; nodes.length; j++) &#123;</span><br><span class="line">                nodes[j].textContent = text</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return nodes</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/02/实现一个jQuery的API/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/27/图解原型以及原型链/" class="archive-article-date">
-  	<time datetime="2019-06-27T05:56:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-27</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/06/27/图解原型以及原型链/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">图解原型以及原型链</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/27/图解原型以及原型链/">图解原型以及原型链</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/26/JS里的数据类型转换/" class="archive-article-date">
-  	<time datetime="2019-06-26T00:45:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/26/JS里的数据类型转换/">JS里的数据类型转换</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/25/JS里的数据类型/" class="archive-article-date">
-  	<time datetime="2019-06-25T02:05:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/25/JS里的数据类型/">JS里的数据类型</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/09/CSS常见布局问题/" class="archive-article-date">
-  	<time datetime="2019-06-09T02:26:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/09/CSS常见布局问题/">CSS常见布局问题</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/05/HTML的常见标签详解/" class="archive-article-date">
-  	<time datetime="2019-06-05T14:03:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/05/HTML的常见标签详解/">HTML的常见标签详解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/04/你应该知道的HTML/" class="archive-article-date">
-  	<time datetime="2019-06-04T12:48:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/04/你应该知道的HTML/">你应该知道的HTML</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/03/HTTP的请求、响应以及curl命令行/" class="archive-article-date">
-  	<time datetime="2019-06-03T12:27:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/03/HTTP的请求、响应以及curl命令行/">通过curl认知HTTP的请求、响应</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/31/常见命令行的使用/" class="archive-article-date">
-  	<time datetime="2019-05-31T10:58:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/31/常见命令行的使用/">常见命令行的使用</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -435,8 +352,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
