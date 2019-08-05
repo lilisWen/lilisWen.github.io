@@ -156,6 +156,137 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-React父子组件的通信" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/04/React父子组件的通信/">React父子组件的通信</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/04/React父子组件的通信/" class="archive-article-date">
+  	<time datetime="2019-08-04T10:15:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="父组件要传数据给子组件很简单，直接放在-props-里即可"><a href="#父组件要传数据给子组件很简单，直接放在-props-里即可" class="headerlink" title="父组件要传数据给子组件很简单，直接放在 props 里即可"></a>父组件要传数据给子组件很简单，直接放在 props 里即可</h3><h3 id="子组件要传递数据给父组件就复杂点："><a href="#子组件要传递数据给父组件就复杂点：" class="headerlink" title="子组件要传递数据给父组件就复杂点："></a>子组件要传递数据给父组件就复杂点：</h3><ol>
+<li>父组件将一个函数 fn 作为子组件的 props 传给子组件</li>
+<li>子组件在恰当的时候调用这个 fn，并且把数据放在 fn 的参数里</li>
+</ol>
+<p>下面以一个龟兔赛跑的例子说明（）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br></pre></td><td class="code"><pre><span class="line">class App extends React.Component&#123;</span><br><span class="line">    constructor()&#123;</span><br><span class="line">        super()</span><br><span class="line">        this.state=&#123;</span><br><span class="line">            result1:0,</span><br><span class="line">            result2:0</span><br><span class="line">        &#125;</span><br><span class="line">    this.t0 = new Date()</span><br><span class="line">    &#125;</span><br><span class="line">    success1()&#123;</span><br><span class="line">        console.log(&apos;兔子跑完啦&apos;);</span><br><span class="line">        this.setState(&#123;</span><br><span class="line">            result1:new Date()-this.t0</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    success2()&#123;</span><br><span class="line">        console.log(&apos;乌龟跑完啦&apos;);</span><br><span class="line">        this.setState(&#123;</span><br><span class="line">            result2:new Date()-this.t0</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    render()&#123;</span><br><span class="line">        return (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;div className=&apos;header&apos;&gt;</span><br><span class="line">                    &lt;Time1 result=&#123;this.state.result2&#125;/&gt;</span><br><span class="line">                    &lt;Judge/&gt;</span><br><span class="line">                    &lt;Time2 result=&#123;this.state.result1&#125;/&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">                &lt;Playground success1=&#123;this.success1.bind(this)&#125; success2=&#123;this.success2.bind(this)&#125;/&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//乌龟用时组件</span><br><span class="line">function Time1(props)&#123;</span><br><span class="line">    return(</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">        &lt;h2&gt;🐢用时&lt;/h2&gt;</span><br><span class="line">        &lt;div&gt;&#123;props.result&#125;&lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//兔子用时组件</span><br><span class="line">function Time2(props)&#123;</span><br><span class="line">    return(</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">    &lt;h2&gt;🐰用时&lt;/h2&gt;</span><br><span class="line">    &lt;div&gt;&#123;props.result&#125;&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line">function Judge()&#123;</span><br><span class="line">    return(</span><br><span class="line">    &lt;div&gt;裁判&lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line">//操场组件</span><br><span class="line">class Playground extends React.Component&#123;</span><br><span class="line">    constructor(props)&#123;</span><br><span class="line">        super(props)</span><br><span class="line">    &#125;</span><br><span class="line">    render()&#123;</span><br><span class="line">        return(</span><br><span class="line">            &lt;div class=&apos;playground&apos;&gt;</span><br><span class="line">            &lt;Track1 success= &#123;this.props.success2.bind(this)&#125;/&gt;</span><br><span class="line">            &lt;Track2 success= &#123;this.props.success1.bind(this)&#125;/&gt; </span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//乌龟赛道组件</span><br><span class="line">class Track1 extends React.Component&#123;</span><br><span class="line">    constructor(props)&#123;</span><br><span class="line">        super(props)</span><br><span class="line">        let n= 0</span><br><span class="line">        this.state=&#123;</span><br><span class="line">            style:&#123;</span><br><span class="line">            transform:`translateX($&#123;n&#125;%)`</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        let timer=setInterval(()=&gt;&#123;</span><br><span class="line">            n+=5</span><br><span class="line">            this.setState(&#123;</span><br><span class="line">                style:&#123;</span><br><span class="line">                transform:`translateX($&#123;n&#125;%)`</span><br><span class="line">            &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">            if(n&gt;=100)&#123;</span><br><span class="line">                window.clearInterval(timer)</span><br><span class="line">                this.props.success()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,1000)</span><br><span class="line">    &#125;</span><br><span class="line">    render()&#123;</span><br><span class="line">        return(</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">            &lt;div class=&apos;player&apos; style=&#123;this.state.style&#125;&gt;🐢&lt;/div&gt;</span><br><span class="line">            &lt;div class=&apos;track&apos;&gt;&lt;/div&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//兔子赛道组件</span><br><span class="line">class Track2 extends React.Component&#123;</span><br><span class="line">    constructor()&#123;</span><br><span class="line">        super()</span><br><span class="line">        let n= 0</span><br><span class="line">        this.state=&#123;</span><br><span class="line">            style:&#123;</span><br><span class="line">            transform:`translateX($&#123;n&#125;%)`</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        let timer=setInterval(()=&gt;&#123;</span><br><span class="line">            n+=10</span><br><span class="line">            this.setState(&#123;</span><br><span class="line">                style:&#123;</span><br><span class="line">                transform:`translateX($&#123;n&#125;%)`</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">        if(n&gt;=100)&#123;</span><br><span class="line">            window.clearInterval(timer)</span><br><span class="line">            this.props.success()</span><br><span class="line">        &#125;</span><br><span class="line">        &#125;,1000)</span><br><span class="line">    &#125;</span><br><span class="line">    render()&#123;</span><br><span class="line">        return(</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">            &lt;div class=&apos;player&apos; style=&#123;this.state.style&#125;&gt;🐰&lt;/div&gt;</span><br><span class="line">            &lt;div class=&apos;track&apos;&gt;&lt;/div&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(&lt;App/&gt;,document.querySelector(&apos;#root&apos;));</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/04/React父子组件的通信/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-移动端是怎么做适配的？" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/28/移动端是怎么做适配的？/">移动端是怎么做适配的？</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/28/移动端是怎么做适配的？/" class="archive-article-date">
+  	<time datetime="2019-07-28T13:36:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/28/移动端是怎么做适配的？/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-简述MVVM以及Vue-js的优点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -688,144 +819,10 @@
 
 
   
-    <article id="post-HTTP的请求、响应以及curl命令行" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/03/HTTP的请求、响应以及curl命令行/">通过curl认知HTTP的请求、响应</a>
-    </h1>
-  
-
-        
-        <a href="/2019/06/03/HTTP的请求、响应以及curl命令行/" class="archive-article-date">
-  	<time datetime="2019-06-03T12:27:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在我们日常浏览网页的过程，实际是客户端向服务器发送HTTP请求，而服务器接收到请求后，返回给客户端一个HTTP响应的过程，接下来本文将通过curl访问<a href="https://www.baidu.cam来讲解HTTP的请求与响应。" target="_blank" rel="noopener">https://www.baidu.cam来讲解HTTP的请求与响应。</a></p>
-<h2 id="HTTP的请求"><a href="#HTTP的请求" class="headerlink" title="HTTP的请求"></a>HTTP的请求</h2><p><strong>1.GET</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s -v -H &quot;Frank: xxx&quot; -- &quot;https://www.baidu.com&quot;//通过curl向https://www.baidu.cam发送请求</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2019/06/03/HTTP的请求、响应以及curl命令行/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/03/HTTP的请求、响应以及curl命令行/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-常见命令行的使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/31/常见命令行的使用/">常见命令行的使用</a>
-    </h1>
-  
-
-        
-        <a href="/2019/05/31/常见命令行的使用/" class="archive-article-date">
-  	<time datetime="2019-05-31T10:58:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文描述了ls、cat、mv、touch四个常用命令，其余常用命令可查看<a href="https://explainshell.com" target="_blank" rel="noopener">explainshell.com</a>网站，了解更多常用命令行使用方法。（具体查阅方法在本文结束时介绍）</p>
-<h2 id="一、ls"><a href="#一、ls" class="headerlink" title="一、ls"></a>一、ls</h2><p><strong>1. ls</strong><br>ls即为list,是用来输出当前目录下的所有文件以及目录名（不包括隐藏文件）</p>
-<p><strong>2.ls -l</strong><br>-l，以长列表形式显示文件和目录的类型、权限、链接数、所属用户、所属组、大小（以字节为单位）、最近修改日期、文件名。（排列顺序与显示顺序相同）<br>eg：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-rw-r--r--@   1 lilis  staff    2172  5 31 18:53 _config.yml</span><br></pre></td></tr></table></figure>
-
-<p><strong>3.ls -a</strong><br>-a，列出包括隐藏文件和目录、以及“.”、“..”在内的所有文件。</p>
-<p><strong>4.ls -al</strong><br>-al即-a与-l联合使用，显示所有文件的详细信息。</p>
-        
-          <a class="article-more-a" href="/2019/05/31/常见命令行的使用/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/31/常见命令行的使用/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 
